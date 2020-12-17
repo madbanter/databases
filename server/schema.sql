@@ -21,14 +21,16 @@ CREATE TABLE users (
 
 CREATE TABLE messages (
   /* Describe your table here. */
-  id int AUTO_INCREMENT,
+  objectId int AUTO_INCREMENT,
   text text NOT NULL,
-  user_id int,
-  room_id int,
-  createdAt datetime,
-  PRIMARY KEY (id),
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (room_id) REFERENCES rooms(id)
+  -- user_id int,
+  -- room_id int,
+  username text NOT NULL,
+  roomname text NOT NULL,
+  createdAt datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (objectId)
+  -- FOREIGN KEY (user_id) REFERENCES users(id),
+  -- FOREIGN KEY (room_id) REFERENCES rooms(id)
 );
 
 /*  Execute this file from the command line by typing:

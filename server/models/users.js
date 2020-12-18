@@ -1,16 +1,16 @@
 var db = require('../db');
 
 module.exports = {
-  getAll: function () {
+  getAll: function (callback) {
     db.query('SELECT * FROM users', (err, results) => {
       if (err) {
         throw error;
       } else {
-        return results;
+        callback(null, results);
       }
     });
   },
-  create: function (user) {
+  create: function (user, callback) {
     var username = user.username || '';
     var sqlCommand = `INSERT INTO users (name) VALUES (${username})`;
     db.query(mysqlCommand, (err, result) => {
@@ -18,6 +18,7 @@ module.exports = {
         throw err;
       } else {
         console.log('Username inserted');
+        callback(null, result);
       }
     });
   }

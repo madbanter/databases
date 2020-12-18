@@ -14,8 +14,9 @@ module.exports = {
   create: function (message, callback) {
     var username = message.username || '';
     var roomname = message.roomname || '';
-    var text = message.text || '';
-    var mysqlCommand = `INSERT INTO messages (username, roomname, text) VALUES (${username}, ${roomname}, ${text})`;
+    var text = message.text || message.message || '';
+    text = text.replace(/'/g, "\\'");
+    var mysqlCommand = `INSERT INTO messages (username, roomname, text) VALUES ('${username}', '${roomname}', '${text}')`;
     db.query(mysqlCommand, (err, result) => {
       if (err) {
         throw err;

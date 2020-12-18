@@ -7,15 +7,18 @@ module.exports = {
         console.log('error');
         res.sendStatus(500).end();
       } else {
-        res.send(results);
+        console.log(results);
+        res.json(results);
       }
     });
   }, // a function which handles a get request for all messages
 
 
   post: function (req, res) {
+    // res.json(req.body);
     var message = req.body;
-    var result = models.messages.create(message, (err, result) => {
+    console.log(message);
+    models.messages.create(message, (err, result) => {
       if (err) {
         res.sendStatus(500).end();
       } else {

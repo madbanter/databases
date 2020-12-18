@@ -12,8 +12,8 @@ module.exports = {
   },
   create: function (user, callback) {
     var username = user.username || '';
-    var sqlCommand = `INSERT INTO users (name) VALUES (${username})`;
-    db.query(mysqlCommand, (err, result) => {
+    var sqlCommand = `INSERT INTO users (name) VALUES ('${username}')`;
+    db.query(sqlCommand, (err, result) => {
       if (err) {
         throw err;
       } else {

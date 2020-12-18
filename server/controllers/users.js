@@ -6,11 +6,12 @@ module.exports = {
       if (err) {
         res.sendStatus(500).end();
       } else {
-        res.send(results);
+        res.json(results);
       }
     });
   },
   post: function (req, res) {
+    console.log(req.body);
     models.users.create(req.body, (err, results) => {
       if (err) {
         res.sendStatus(500).end();
